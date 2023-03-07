@@ -1,6 +1,15 @@
-FROM isaackuang/alpine-base:3.16
+FROM python:slim
 
-RUN apk --no-cache --progress add python3 py3-pip
+WORKDIR /app
 
-RUN pip3 install curator-opensearch --ignore-installed six
+COPY config /
+COPY src /app
 
+RUN pip3 install --upgrade pip && \
+    pip3 install -r requirements.txt
+
+ENTRYPOINT ["python3", "main.py"]
+
+### install requirements
+## pip3 install pipreqs
+## pipreqs /app

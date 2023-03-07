@@ -1,0 +1,18 @@
+client:
+  hosts:
+    - 192.168.80.28
+  port: 9200
+  # url_prefix:
+  use_ssl: True
+  certificate: /usr/share/kibana/config/certs/elastic-certificate.pem
+  username: admin
+  password: admin
+  timeout: 30
+  aws_auth: False
+  region: ap-northeast-1
+  service: es
+logging:
+  loglevel: INFO
+  logfile:
+  logformat: json
+  blacklist: ['elasticsearch', 'urllib3']
