@@ -5,8 +5,8 @@ client:
   # url_prefix:
   use_ssl: True
   certificate: /usr/share/kibana/config/certs/elastic-certificate.pem
-  username: admin
-  password: admin
+  username: ${ELASTIC_USERNAME}
+  password: ${ELASTIC_PASSWORD}
   timeout: 30
   aws_auth: False
   region: ap-northeast-1

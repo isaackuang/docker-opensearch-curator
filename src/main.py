@@ -1,4 +1,5 @@
 import lib.curator as curator
+import lib.config_parser as config_parser
 from lib.opensearch import OpensearchClient
 import pydash as _
 import yaml
@@ -13,31 +14,26 @@ def get_parser():
 
 parser = get_parser()
 args = parser.parse_args()
-config_path = args.config
+config = config_parser.parse_config(args.config)
+print(_.get(config, 'client'))
+
 dry_run = args.dry_run
 action_path = args.action_path
-print(config_path)
+# print(config_path)
 
 options = {}
 options['dry_run'] = dry_run
 
-with open(config_path, "r") as stream:
-    try:
-        client_info = _.get(yaml.safe_load(stream), 'client')
-        # print(client_info)
-    except yaml.YAMLError as exc:
-        print(exc)
-
-opensearch = OpensearchClient(client_info)
+opensearch = OpensearchClient(_.get(config, 'client'))
 
 # try:
-#     opensearch.create_index('bob-2022.03.01')
-#     opensearch.create_index('test-2022.03.02')
-#     opensearch.create_index('test-2023.02.17')
+#     opensearch.create_index('bob-2022.03.02')
+#     # opensearch.create_index('test-2022.03.02')
+#     # opensearch.create_index('test-2023.02.17')
 #     # opensearch.create_index('test-2023.03.04')
 #     # opensearch.create_index('test-2023.03.05')
-# except:
-#     print("Index exist")
+# except Exception as e:
+#     print(e)
 
 
 with open(action_path, "r") as stream:
