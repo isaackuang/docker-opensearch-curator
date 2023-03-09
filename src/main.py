@@ -15,7 +15,7 @@ def get_parser():
 parser = get_parser()
 args = parser.parse_args()
 config = config_parser.parse_config(args.config)
-print(_.get(config, 'client'))
+# print(_.get(config, 'client'))
 
 dry_run = args.dry_run
 action_path = args.action_path
