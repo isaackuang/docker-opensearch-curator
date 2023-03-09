@@ -1,4 +1,3 @@
-import lib.opensearch as opensearch
 import lib.curator as curator
 from lib.opensearch import OpensearchClient
 import pydash as _
