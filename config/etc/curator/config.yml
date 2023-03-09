@@ -15,4 +15,4 @@ logging:
   loglevel: INFO
   logfile:
   logformat: json
-  blacklist: ['elasticsearch', 'urllib3']
+  blacklist: ['opensearch', 'urllib3']

@@ -21,7 +21,7 @@ print(config_path)
 options = {}
 options['dry_run'] = dry_run
 
-with open("/etc/curator/config.yml", "r") as stream:
+with open(config_path, "r") as stream:
     try:
         client_info = _.get(yaml.safe_load(stream), 'client')
         # print(client_info)
